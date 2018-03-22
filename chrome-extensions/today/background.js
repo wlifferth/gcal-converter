@@ -1,11 +1,12 @@
-chrome.tabs.onUpdated.addListener(function(tabID, changeInfo, tab) {
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   if(changeInfo.status !== 'complete')
   {
     return;
   }
-  var match = 'https://www.google.com/calendar/render';
+  var match = 'https://calendar.google.com/';
   if(tab.url.substring(0, match.length) === match)
   {
+    console.log("YO YO YO");
     chrome.tabs.executeScript(tabId, {file: 'today.js' });
   }
 });
